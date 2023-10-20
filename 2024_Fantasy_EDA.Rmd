@@ -1,0 +1,30 @@
+---
+title: "NBA_fantasy_2024"
+author: "Tim Tantivilaisin"
+date: "2023-10-20"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd("/Users/timtan/Desktop/Git Portfolio/NBA_fantasy_2024")
+```
+
+```{r, warning=FALSE, message=FALSE, eval=FALSE}
+# Install and Load the nbastatR package
+library('nbastatR')
+library('dplyr')
+library('ggplot2')
+Sys.setenv("VROOM_CONNECTION_SIZE" = 131072 * 2)
+
+# what seasons you want to analyze
+seasons <- seq(2003, 2023)
+
+# Access the game tables for a particular season
+gamedata <- game_logs(seasons = seasons)
+
+# 
+wd <- paste0(getwd(), "/data")
+write.csv(x = gamedata, file = paste0(wd,"/2000_2023_Data.csv"), row.names = FALSE)
+```
+
